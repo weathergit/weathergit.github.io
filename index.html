@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>田琪 Qi Tian | Postdoctoral Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 10px 15px -3px rgba(0, 0, 0, 0.05),
+                0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .paper-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .paper-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .paper-card:hover {
+            border-left-color: #667eea;
+            background: rgba(255, 255, 255, 0.98);
+            transform: translateX(8px);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.1);
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02) rotate(1deg);
+            box-shadow: 
+                0 35px 60px -15px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 60px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2, transparent);
+        }
+
+        .timeline-dot {
+            position: relative;
+            z-index: 10;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.2);
+            border-color: #764ba2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-journal {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .badge-year {
+            background: var(--secondary-gradient);
+            color: white;
+        }
+
+        .badge-first {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden-lang {
+            display: none;
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4b5563;
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .stat-number {
+            font-size: 1.875rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <div class="bg-mesh"></div>
+
+    <!-- Language Toggle -->
+    <button onclick="toggleLanguage()" class="lang-toggle px-6 py-3 rounded-full font-semibold text-sm flex items-center gap-2 text-gray-700">
+        <i class="fas fa-globe text-blue-500"></i>
+        <span id="lang-text">English</span>
+    </button>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Content -->
+            <div class="space-y-8 order-2 lg:order-1">
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-bold border border-blue-100 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span class="lang-zh">博士后研究员 | 中国农业大学</span>
+                        <span class="lang-en hidden-lang">Postdoc Researcher | China Agricultural University</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
+                        <span class="block text-gray-900 mb-2">田琪</span>
+                        <span class="block gradient-text">Qi Tian</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-lg font-light">
+                        <span class="lang-zh">农业生态系统建模 · 遥感 · 深度学习 · 表型组学</span>
+                        <span class="lang-en hidden-lang">Agroecosystem Modeling · Remote Sensing · Deep Learning · Phenomics</span>
+                    </p>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid max-w-md">
+                    <div class="stat-item">
+                        <div class="stat-number">14+</div>
+                        <div class="text-xs text-gray-500 mt-1">Publications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="text-xs text-gray-500 mt-1">First Author</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2025</div>
+                        <div class="text-xs text-gray-500 mt-1">PhD Graduated</div>
+                    </div>
+                </div>
+
+                <!-- Research Tags -->
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag">
+                        <i class="fas fa-seedling text-green-500"></i>
+                        Crop Modeling
+                    </span>
+                    <span class="skill-tag">
+                        <i class="fas fa-satellite text-blue-500"></i>
+                        Remote Sensing
+                    </span>
+                    <span class="skill-tag">
+                        <i class="fas fa-brain text-purple-500"></i>
+                        Deep Learning
+                    </span>
+                    <span class="skill-tag">
+                        <i class="fas fa-microscope text-orange-500"></i>
+                        Phenotyping
+                    </span>
+                </div>
+
+                <!-- Contact Buttons -->
+                <div class="flex gap-4 pt-4">
+                    <a href="mailto:qtian@cau.edu.cn" class="px-8 py-4 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2 hover:scale-105" style="background: var(--primary-gradient);">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://github.com/Marscolono" target="_blank" class="glass-card px-8 py-4 rounded-full font-semibold text-gray-700 hover:text-blue-600 transition-all flex items-center gap-2 hover:scale-105">
+                        <i class="fab fa-github text-xl"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Content - Photo -->
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                <div class="profile-container">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-3 opacity-20 blur-xl"></div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=650&fit=crop" 
+                         alt="Qi Tian" 
+                         class="profile-img relative w-80 h-[26rem] lg:w-96 lg:h-[30rem] object-cover rounded-3xl">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-20 px-4 section-fade">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 lg:p-12">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-user-circle text-blue-600 text-2xl"></i>
+                    <span class="lang-zh">关于我</span>
+                    <span class="lang-en hidden-lang">About Me</span>
+                </h2>
+                <div class="prose prose-lg text-gray-600 leading-relaxed space-y-4">
+                    <p class="lang-zh">
+                        我于2025年获得西北农林科技大学博士学位，现为中国农业大学博士后研究员，合作导师为王喜庆教授。我的研究聚焦于农业生态系统与作物模型、遥感与GIS、计算机视觉与图像处理（表型组学）、以及机器学习与数据科学的交叉领域。我擅长使用Python和R进行数据分析和模型开发。
+                    </p>
+                    <p class="lang-en hidden-lang">
+                        I received my PhD from Northwest A&F University in 2025 and am currently a postdoctoral researcher at China Agricultural University, working with Prof. Wang Xiqing. My research focuses on the intersection of agricultural ecosystems & crop modeling, remote sensing & GIS, computer vision & image processing (phenotyping), and machine learning & data science. I am proficient in Python and R for data analysis and model development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section class="py-20 px-4 bg-white/30 section-fade">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                <span class="lang-zh">教育经历</span>
+                <span class="lang-en hidden-lang">Education</span>
+            </h2>
+            
+            <div class="relative space-y-8 pl-4">
+                <div class="timeline-line"></div>
+                
+                <!-- Postdoc -->
+                <div class="timeline-item glass-card p-6 rounded-2xl ml-8 relative">
+                    <div class="absolute -left-12 top-6 timeline-dot"></div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fas fa-flask text-blue-600"></i>
+                            <span class="lang-zh">博士后研究员</span>
+                            <span class="lang-en hidden-lang">Postdoctoral Researcher</span>
+                        </h3>
+                        <span class="text-sm font-bold text-blue-600 bg-blue-50 px-4 py-1 rounded-full mt-2 md:mt-0 w-fit">2025 - Present</span>
+                    </div>
+                    <p class="text-gray-700 font-medium mb-2">China Agricultural University (中国农业大学)</p>
+                    <p class="text-gray-500 text-sm mb-3">College of Biological Sciences (生物学院)</p>
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-3 rounded-lg text-sm text-gray-700 border border-blue-100">
+                        <span class="font-semibold">Supervisor:</span> 王喜庆教授 (Prof. Wang Xiqing)
+                    </div>
+                </div>
+
+                <!-- PhD -->
+                <div class="timeline-item glass-card p-6 rounded-2xl ml-8 relative">
+                    <div class="absolute -left-12 top-6 timeline-dot"></div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fas fa-graduation-cap text-purple-600"></i>
+                            <span class="lang-zh">博士 (2019-2025)</span>
+                            <span class="lang-en hidden-lang">Ph.D. (2019-2025)</span>
+                        </h3>
+                        <span class="text-sm font-bold text-purple-600 bg-purple-50 px-4 py-1 rounded-full mt-2 md:mt-0 w-fit">2019 - 2025</span>
+                    </div>
+                    <p class="text-gray-700 font-medium mb-2">Northwest A&F University (西北农林科技大学)</p>
+                    <p class="text-gray-500 text-sm mb-3">College of Natural Resources & Environment (资源环境学院)</p>
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-3 rounded-lg text-sm text-gray-700 border border-purple-100">
+                        <span class="font-semibold">Supervisors:</span> 于强研究员 (Prof. Yu Qiang)、赵刚研究员 (Prof. Zhao Gang)
+                    </div>
+                </div>
+
+                <!-- Master -->
+                <div class="timeline-item glass-card p-6 rounded-2xl ml-8 relative">
+                    <div class="absolute -left-12 top-6 timeline-dot"></div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fas fa-university text-green-600"></i>
+                            <span class="lang-zh">硕士 (保送)</span>
+                            <span class="lang-en hidden-lang">M.Sc. (Recommended)</span>
+                        </h3>
+                        <span class="text-sm font-bold text-green-600 bg-green-50 px-4 py-1 rounded-full mt-2 md:mt-0 w-fit">2019 - 2022</span>
+                    </div>
+                    <p class="text-gray-700 font-medium mb-2">Northwest A&F University (西北农林科技大学)</p>
+                    <div class="bg-gradient-to-r from-green-50 to-teal-50 p-3 rounded-lg text-sm text-gray-700 border border-green-100">
+                        <span class="font-semibold">Supervisor:</span> 岳超研究员 (Prof. Yue Chao)
+                        <p class="text-xs text-gray-500 mt-1">Developed forest fire spread algorithm (开发了森林火线扩散算法)</p>
+                    </div>
+                </div>
+
+                <!-- Bachelor -->
+                <div class="timeline-item glass-card p-6 rounded-2xl ml-8 relative">
+                    <div class="absolute -left-12 top-6 timeline-dot"></div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fas fa-book text-orange-600"></i>
+                            <span class="lang-zh">本科 (2015-2019)</span>
+                            <span class="lang-en hidden-lang">B.Eng. (2015-2019)</span>
+                        </h3>
+                        <span class="text-sm font-bold text-orange-600 bg-orange-50 px-4 py-1 rounded-full mt-2 md:mt-0 w-fit">2015 - 2019</span>
+                    </div>
+                    <p class="text-gray-700 font-medium mb-2">Northwest A&F University (西北农林科技大学)</p>
+                    <p class="text-gray-500 text-sm mb-3">College of Natural Resources & Environment / Innovation Experimental College (资源环境学院 / 创新实验学院)</p>
+                    <div class="bg-gradient-to-r from-orange-50 to-yellow-50 p-3 rounded-lg text-sm text-gray-700 border border-orange-100">
+                        <span class="font-semibold">Supervisor:</span> 朱求安教授 (Prof. Zhu Qiuan)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section class="py-20 px-4 section-fade">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                <span class="lang-zh">研究方向</span>
+                <span class="lang-en hidden-lang">Research Interests</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl hover:shadow-2xl transition-all group cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform group-hover:bg-blue-600">
+                        <i class="fas fa-cloud-sun text-2xl text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Agriculture Ecosystem</h3>
+                    <p class="text-sm text-gray-600">农业生态系统</p>
+                    <p class="text-xs text-gray-400 mt-2">Crop Modeling | APSIM | DSSAT</p>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl hover:shadow-2xl transition-all group cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform group-hover:bg-green-600">
+                        <i class="fas fa-satellite-dish text-2xl text-green-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Remote Sensing</h3>
+                    <p class="text-sm text-gray-600">遥感与GIS</p>
+                    <p class="text-xs text-gray-400 mt-2">Google Earth Engine | UAV</p>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl hover:shadow-2xl transition-all group cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform group-hover:bg-purple-600">
+                        <i class="fas fa-robot text-2xl text-purple-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Computer Vision</h3>
+                    <p class="text-sm text-gray-600">计算机视觉</p>
+                    <p class="text-xs text-gray-400 mt-2">Phenotyping | Object Detection</p>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl hover:shadow-2xl transition-all group cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform group-hover:bg-orange-600">
+                        <i class="fas fa-brain text-2xl text-orange-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Machine Learning</h3>
+                    <p class="text-sm text-gray-600">机器学习</p>
+                    <p class="text-xs text-gray-400 mt-2">Deep Learning | PyTorch | LLM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="py-20 px-4 bg-white/40 section-fade">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">
+                <span class="lang-zh">发表论文</span>
+                <span class="lang-en hidden-lang">Publications</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-12 text-sm">
+                * Click titles to view source | * Corresponding author
+            </p>
+
+            <div class="space-y-4">
+                <!-- 2025 Papers -->
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2025</span>
+                        <span class="badge badge-journal">Atmosphere</span>
+                    </div>
+                    <a href="https://www.mdpi.com/2073-4433/16/5/551" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        The Forecasting Yield of Highland Barley and Wheat by Combining a Crop Model with Different Weather Fusion Methods in the Study of the Northeastern Tibetan Plateau
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Peng Li; Liang He; Xuetong Wang; Mengfan Zhao; Fan Li; Ning Jin; Ning Yao; Chao Chen; <strong class="text-gray-900">Qi Tian</strong>; Bin Chen; Gang Zhao; Qiang Yu*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2025</span>
+                        <span class="badge badge-journal">Computers and Electronics in Agriculture</span>
+                    </div>
+                    <a href="https://papers.agrivy.com/webfiles/papers/2025-CEA-110442.pdf" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        CDIP-ChatGLM3: A dual-model approach integrating computer vision and language modeling for crop disease identification and prescription
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Changqing Yan; Zeyun Liang; Han Cheng; Shuyang Li; Guangpeng Yang; Zhiwei Li; Ling Yin; Junjie Qu; Jing Wang; Genghong Wu; <strong class="text-gray-900">Qi Tian</strong>; Qiang Yu; Gang Zhao*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2025</span>
+                        <span class="badge badge-journal">Earth System Science Data</span>
+                    </div>
+                    <a href="https://essd.copernicus.org/preprints/essd-2025-192/" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Spatially adaptive estimation of multi-layer soil temperature at a daily time-step across China during 2010–2020
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Xuetong Wang; Liang He*; Peng Li; Jiageng Ma; Yu Shi; <strong class="text-gray-900">Qi Tian</strong>; Gang Zhao; Jianqiang He; Hao Feng; Hao Shi*; Qiang Yu*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2025</span>
+                        <span class="badge badge-journal">Agricultural and Forest Meteorology</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0168192325001234" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Climate-driven shifts in suitable areas of Alternaria leaf blotch (Alternaria mali Roberts) on apples: Projections and uncertainty analysis in China
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Bin Chen; Gang Zhao*; <strong class="text-gray-900">Qi Tian</strong>; Linjia Yao; Genghong Wu; Jing Wang; Qiang Yu*
+                    </p>
+                </div>
+
+                <!-- 2024 Papers -->
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2024</span>
+                        <span class="badge badge-journal">Habitat International</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0197397524000898" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Impacts of "One Household One Plot" and "One Village Group One Plot" fragmentation consolidation models on cultivated land use transition from perspective of human-land system
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Wenhao Niu; Lan Luo; Yu Shi; Chaoqing Chai; Haoyang Wang; <strong class="text-gray-900">Qi Tian</strong>; Yaya Jin; Xiangbin Kong; Qiang Yu; Lisuo Ren; Bangbang Zhang*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2024</span>
+                        <span class="badge badge-journal">Agricultural and Forest Meteorology</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0168192324001456" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Performance of nine maize phenology models in China under historical climate change conditions
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Xiaofeng Kang; Dingrong Wu*; Jiaojiao Tan; Peijuan Wang; Yuping Ma; Jianying Yang; Chunyi Wang; Zhiguo Huo; <strong class="text-gray-900">Qi Tian</strong>; Qiang Yu
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2024</span>
+                        <span class="badge badge-journal">Plant Phenomics</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2643651524002255" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        AFM-YOLOv8s: An Accurate, Fast, and Highly Robust Model for Detection of Sporangia of Plasmopara viticola with Various Morphological Variants
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Changqing Yan; Zeyun Liang; Lin Yin; Shumei Wei; <strong class="text-gray-900">Qi Tian</strong>; Ying Li; Han Cheng; Jiandong Liu; Qiang Yu; Gang Zhao*; Junjie Qu*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2024</span>
+                        <span class="badge badge-journal">Agricultural and Forest Meteorology</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0168192324000981" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Overcoming mechanistic limitations of process-based phenological models: A data clustering method for large-scale applications
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Jiaojiao Tan; Gang Zhao*; <strong class="text-gray-900">Qi Tian</strong>; Lei Zheng; Xiaofeng Kang; Qinsi He; Yu Shi; Bin Chen; Dingrong Wu; Ning Yao; Liang He; Amit Kumar Srivastava; Yi Li; Jianqiang He; Hao Feng; Qiang Yu*
+                    </p>
+                </div>
+
+                <!-- First Author Paper -->
+                <div class="paper-card p-6 rounded-xl shadow-sm border-2 border-green-200 bg-gradient-to-r from-green-50/50 to-emerald-50/30">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2024</span>
+                        <span class="badge badge-first"><i class="fas fa-star mr-1"></i>First Author</span>
+                        <span class="badge badge-journal">Pest Management Science</span>
+                    </div>
+                    <a href="https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/ps.8023" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Enhancing practicality of deep learning for crop disease identification under field conditions: insights from model evaluation and crop-specific approaches
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        <strong class="text-gray-900 border-b-2 border-green-400">Qi Tian</strong>; Gang Zhao*; Changqing Yan; Linjia Yao; Junjie Qu; Lin Yin; Hao Feng; Ning Yao; Qiang Yu*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2024</span>
+                        <span class="badge badge-journal">Remote Sensing</span>
+                    </div>
+                    <a href="https://www.mdpi.com/2072-4292/16/7/1089" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Monitoring of Cropland Abandonment and Land Reclamation in the Farming-Pastoral Zone of Northern China
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Junzhi Ye; Yunfeng Hu*; Zhiming Feng; Lin Zhen; Yu Shi; <strong class="text-gray-900">Qi Tian</strong>; Yunzhi Zhang
+                    </p>
+                </div>
+
+                <!-- 2023 Papers -->
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2023</span>
+                        <span class="badge badge-journal">Global Ecology and Biogeography</span>
+                    </div>
+                    <a href="https://onlinelibrary.wiley.com/doi/10.1111/geb.13728" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        The climate driven distribution and response to global change of soil-borne pathogens in agroecosystems
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Ziheng Peng; Yu Liu; Jiejun Qi; Hang Gao; Xiaomeng Li; <strong class="text-gray-900">Qi Tian</strong>; Xun Qian; Gehong Wei*; Shuo Jiao*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2023</span>
+                        <span class="badge badge-journal">Forest Ecology and Management</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0378112723005148" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Spatiotemporal patterns of fire-driven forest mortality in China
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Jie Zhao; Jiaming Wang; Yifan Meng; Ziqiang Du; Hui Ma; Linghua Qiu; <strong class="text-gray-900">Qi Tian</strong>; Liang Wang; Mengyang Xu; Hongfei Zhao; Chao Yue*
+                    </p>
+                </div>
+
+                <!-- 2022 & 2021 -->
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2022</span>
+                        <span class="badge badge-journal">Agricultural Systems</span>
+                    </div>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S0308521X22000987" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Identifying effective agricultural management practices for climate change adaptation and mitigation: A win-win strategy in South-Eastern Australia
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Qinsi He; De Li Liu; Bin Wang; Linchao Li; Annette Cowie; Aaron Simmons; Hongxu Zhou; <strong class="text-gray-900">Qi Tian</strong>; Sien Li; Yi Li; Ke Liu; Haoliang Yan; Matthew Tom Harrison; Puyu Feng; Cathy Waters; Guangdi D.Li; Peter de Voil; Qiang Yu*
+                    </p>
+                </div>
+
+                <div class="paper-card p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge badge-year">2021</span>
+                        <span class="badge badge-journal">JGR: Atmospheres</span>
+                    </div>
+                    <a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021JD035339" target="_blank" class="block text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors mb-2 leading-snug">
+                        Fire Regime Impacts on Postfire Diurnal Land Surface Temperature Change Over North American Boreal Forest
+                    </a>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Jie Zhao; Liang Wang; Xin Hou; Guangyao Li; <strong class="text-gray-900">Qi Tian</strong>; Eme Chan; Philippe Ciais; Qiang Yu; Chao Yue*
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 px-4 section-fade">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                <span class="lang-zh">技术技能</span>
+                <span class="lang-en hidden-lang">Technical Skills</span>
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-blue-700">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        Programming
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux/SSH</span>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-green-700">
+                        <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        Modeling & ML
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">APSIM</span>
+                        <span class="skill-tag">DSSAT</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">YOLO</span>
+                        <span class="skill-tag">LLM</span>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-purple-700">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        Remote Sensing
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Google Earth Engine</span>
+                        <span class="skill-tag">QGIS</span>
+                        <span class="skill-tag">ArcGIS</span>
+                        <span class="skill-tag">ENVI</span>
+                        <span class="skill-tag">GDAL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 px-4 bg-white/30 section-fade">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">
+                <span class="lang-zh">联系方式</span>
+                <span class="lang-en hidden-lang">Contact</span>
+            </h2>
+            
+            <div class="glass-card p-8 rounded-3xl inline-block max-w-lg w-full">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-sm text-gray-500">Email</div>
+                            <div class="font-semibold text-gray-800">qtian@cau.edu.cn</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-green-50/50 hover:bg-green-50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                            <i class="fas fa-building text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-sm text-gray-500">Institution</div>
+                            <div class="font-semibold text-gray-800">China Agricultural University</div>
+                            <div class="text-xs text-gray-500">College of Biological Sciences</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-sm text-gray-500">Location</div>
+                            <div class="font-semibold text-gray-800">Beijing, China</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-orange-50/50 hover:bg-orange-50 transition-colors">
+                        <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+                            <i class="fas fa-flask text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-sm text-gray-500">Lab</div>
+                            <div class="font-semibold text-gray-800">Crop Functional Genomics</div>
+                            <div class="text-xs text-gray-500">Prof. Wang Xiqing's Group</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-sm text-gray-400">
+                <p>Last Update: March 2025</p>
+                <p class="mt-2">© 2025 Qi Tian (田琪). All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Language Toggle
+        let currentLang = 'zh';
+        
+        function toggleLanguage() {
+            const zhElements = document.querySelectorAll('.lang-zh');
+            const enElements = document.querySelectorAll('.lang-en');
+            const btnText = document.getElementById('lang-text');
+            
+            if (currentLang === 'zh') {
+                zhElements.forEach(el => el.classList.add('hidden-lang'));
+                enElements.forEach(el => el.classList.remove('hidden-lang'));
+                btnText.textContent = '中文';
+                currentLang = 'en';
+                document.documentElement.lang = 'en';
+            } else {
+                zhElements.forEach(el => el.classList.remove('hidden-lang'));
+                enElements.forEach(el => el.classList.add('hidden-lang'));
+                btnText.textContent = 'English';
+                currentLang = 'zh';
+                document.documentElement.lang = 'zh-CN';
+            }
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stagger animation for paper cards
+        document.querySelectorAll('.paper-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.6s ease ${index * 0.05}s`;
+            
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cardObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
